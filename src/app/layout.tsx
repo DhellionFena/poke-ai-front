@@ -27,10 +27,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} h-screen antialiased`}
       >
         <PokedexLayout>
-        {children}
+          <div className="h-full w-full bg-green-300">{children}</div>
         </PokedexLayout>
       </body>
     </html>
