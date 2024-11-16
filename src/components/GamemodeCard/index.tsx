@@ -1,15 +1,13 @@
 import "@heroicons/react";
 import Link from "next/link";
 
-export default function GamemodeCard({
-  icon,
-  text,
-  mode,
-}: Readonly<{
+interface GamemodeProps {
   icon: React.ReactNode;
   text: string;
   mode: string;
-}>) {
+}
+
+export default function GamemodeCard({ icon, text, mode }: GamemodeProps) {
   return (
     <Link
       href={{
