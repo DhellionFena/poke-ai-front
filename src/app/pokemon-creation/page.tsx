@@ -28,7 +28,7 @@ export default function PokemonForm() {
   };
 
   return (
-    <main className="flex w-full flex-col items-center justify-center">
+    <main className="flex w-full flex-grow flex-col items-center justify-center pb-1">
       <h1 className="py-5 text-center text-2xl text-black">
         Vamos criar o Pokémon do Jogador 1!
       </h1>

@@ -1,10 +1,9 @@
 import GamemodeCard from "@/components/GamemodeCard";
 import { ComputerDesktopIcon, UserIcon } from "@heroicons/react/24/solid";
-import { text } from "stream/consumers";
 
 export default function Gamemode() {
   return (
-    <main className="flex h-full w-full flex-col items-center justify-center">
+    <main className="flex h-full w-full flex-grow flex-col items-center justify-center px-5">
       <h1 className="text-center text-2xl text-black">
         Selecione o modo de jogo desejado
       </h1>

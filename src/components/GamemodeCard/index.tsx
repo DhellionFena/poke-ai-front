@@ -18,7 +18,7 @@ export default function GamemodeCard({ icon, text, mode }: GamemodeProps) {
     >
       <div className="flex flex-col items-center text-xl hover:text-red-600">
         {icon}
-        {text}
+        <span className="w-ful text-center">{text}</span>
       </div>
     </Link>
   );
