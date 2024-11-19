@@ -123,8 +123,8 @@ export default function PokemonForm() {
                 <SelectValue placeholder="Selecione o sexo" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="masc">Masculino</SelectItem>
-                <SelectItem value="fem">Feminino</SelectItem>
+                <SelectItem value="masc">Macho</SelectItem>
+                <SelectItem value="fem">Fêmea</SelectItem>
               </SelectContent>
             </Select>
             {errors.sexo && (
