@@ -7,33 +7,33 @@ interface MoveCardProps {
 }
 
 const typeColors: { [key: string]: string } = {
-  Electric: "bg-yellow-500",
-  Fire: "bg-red-500",
-  Water: "bg-blue-500",
-  Grass: "bg-green-500",
-  Normal: "bg-gray-500",
-  Psychic: "bg-pink-500",
-  Fighting: "bg-orange-500",
-  Fairy: "bg-pink-300",
-  Poison: "bg-purple-500",
-  Ground: "bg-brown-500",
-  Flying: "bg-blue-300",
-  Bug: "bg-green-700",
-  Rock: "bg-gray-700",
-  Ghost: "bg-indigo-600",
-  Steel: "bg-gray-400",
-  Ice: "bg-cyan-500",
-  Dragon: "bg-indigo-700",
-  Dark: "bg-black",
-  Shadow: "bg-gray-800",
+  Electric: "border-yellow-500",
+  Fire: "border-red-500",
+  Water: "border-blue-500",
+  Grass: "border-green-500",
+  Normal: "border-gray-500",
+  Psychic: "border-pink-500",
+  Fighting: "border-orange-500",
+  Fairy: "border-pink-300",
+  Poison: "border-purple-500",
+  Ground: "border-brown-500",
+  Flying: "border-blue-300",
+  Bug: "border-green-700",
+  Rock: "border-gray-700",
+  Ghost: "border-indigo-600",
+  Steel: "border-gray-400",
+  Ice: "border-cyan-500",
+  Dragon: "border-indigo-700",
+  Dark: "border-black",
+  Shadow: "border-gray-800",
 };
 
 export default function MoveCard({ move }: MoveCardProps) {
-  const backgroundColor = typeColors[move.type] || "bg-gray-500";
+  const borderColor = typeColors[move.type] || "border-gray-500";
 
   return (
     <button
-      className={`w-full text-base border border-black flex items-center justify-center ${backgroundColor} rounded-lg shadow-lg transition-transform duration-200 hover:scale-[1.02]`}
+      className={`w-full text-base border-8 ${borderColor} flex items-center justify-center rounded-lg shadow-lg transition-transform duration-200 hover:scale-[1.02] hover:shadow-xl`}
     >
       <div>
         <h4 className="font-bold text-sm">{move.name}</h4>

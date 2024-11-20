@@ -5,7 +5,6 @@ interface HealthBarProps {
 }
 
 export default function HealthBar({ life }: HealthBarProps) {
-  // Definindo a cor de fundo com base no valor de vida
   const healthColor = life <= 20 ? "bg-red-600" : "bg-green-600";
 
   return (
