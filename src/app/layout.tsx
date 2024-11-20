@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import PokedexLayout from "@/components/PokedexLayout";
-
-const PressStart2P = Press_Start_2P({
-  weight: "400",
-  subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext", "greek"],
-});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,12 +27,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${PressStart2P.className} min-h-screen antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} h-screen antialiased`}
       >
         <PokedexLayout>
-          <div className="flex min-h-full w-full flex-col rounded-md bg-green-300">
-            {children}
-          </div>
+          <div className="h-full w-full bg-green-300">{children}</div>
         </PokedexLayout>
       </body>
     </html>
