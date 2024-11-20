@@ -1,7 +1,6 @@
 import PokemonInBattle from "@/components/PokemonInBattle";
 
 export default function Home() {
-
   const Pikachu = {
     nome: "Pikachu",
     vida: 19,
@@ -13,8 +12,9 @@ export default function Home() {
       { name: "Quick Attack", type: "Normal", damage: 30 },
       { name: "Iron Tail", type: "Steel", damage: 50 },
       { name: "Electro Ball", type: "Electric", damage: 60 },
-    ]
+    ],
   };
+
   const Chimchar = {
     nome: "Chimchar",
     vida: 73,
@@ -26,15 +26,13 @@ export default function Home() {
       { name: "Mach Punch", type: "Fighting", damage: 30 },
       { name: "Scratch", type: "Normal", damage: 20 },
       { name: "Fire Spin", type: "Fire", damage: 50 },
-    ]
+    ],
   };
-  
 
   return (
-<div style={{display: "flex", height: "100%", backgroundColor: "white", alignItems: "center", justifyContent: "space-evenly"}}>
-  <PokemonInBattle pokemon={Pikachu} />
-  <PokemonInBattle pokemon={Chimchar} />
-</div>
-
-  )
+    <div className="flex flex-col xl:flex-row items-center justify-evenly min-h-full bg-white">
+      <PokemonInBattle pokemon={Pikachu} />
+      <PokemonInBattle pokemon={Chimchar} />
+    </div>
+  );
 }

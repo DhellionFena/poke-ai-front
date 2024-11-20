@@ -36,7 +36,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${PressStart2P.className} min-h-screen antialiased`}
       >
         <PokedexLayout>
-          <div className="flex h-full w-full flex-col rounded-md bg-green-300">
+          <div className="flex min-h-full w-full flex-col rounded-md bg-green-300">
             {children}
           </div>
         </PokedexLayout>
