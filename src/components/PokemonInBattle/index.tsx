@@ -24,15 +24,17 @@ interface PokemonInBattleProps {
 
 export default function PokemonInBattle({ pokemon }: PokemonInBattleProps) {
   return (
-    <div className="h-[95%] w-2/5 border border-black  p-4 rounded-lg shadow-lg">
-      <div className="flex h-1/5 flex-col items-center justify-center text-center gap-2">
+    <div
+      className="min-h-full w-full border-2 border-black p-4 rounded-lg shadow-lg bg-[url('https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/204364595/original/86db6005cd51b4f60e71cca277f603a82cf5646a/draw-a-pixel-pokemon-battle-background.png')] bg-cover bg-center"
+    >
+      <div className="flex h-[10%] xl:h-[20%] flex-col items-center justify-center text-center gap-2">
         <p>{pokemon.nome}</p>
         <HealthBar life={pokemon.vida} />
       </div>
-      <div className="h-2/5">
+      <div className="h-[30%] xl:h-[40%]">
         <PokemonImage image={pokemon.imageUrl} />
       </div>
-      <div className="h-2/5">
+      <div className="xl:h-[40%] h-[60%]">
         <MoveSetComponent moveset={pokemon.moveset} />
       </div>
     </div>

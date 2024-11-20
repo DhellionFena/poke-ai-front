@@ -10,7 +10,7 @@ export default function PokedexLayout({
         <div className="h-7 w-6 border border-zinc-950"></div>
       </div>
       <div className="h-[calc(100vh-1.75rem)] overflow-auto bg-red-700 px-10 py-5 md:pl-36 md:pr-12">
-        <div className="h-full w-full">{children}</div>
+        <div className="h-full w-full flex">{children}</div>
       </div>
       {/* linha lateral */}
       <div className="fixed top-0 flex h-[calc(100vh-20.1rem)] w-7 flex-col items-center justify-end border border-zinc-950 border-b-transparent bg-red-700"></div>

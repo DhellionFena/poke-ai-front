@@ -36,7 +36,12 @@ export default function MoveCard({ move }: MoveCardProps) {
       className={`w-full text-base border-8 ${borderColor} flex items-center justify-center rounded-lg shadow-lg transition-transform duration-200 hover:scale-[1.02] hover:shadow-xl`}
     >
       <div>
-        <h4 className="font-bold text-sm">{move.name}</h4>
+      <h4
+          className="font-bold text-sm break-words text-center"
+          style={{ overflowWrap: "anywhere" }}
+        >
+          {move.name}
+        </h4>
         <p className="text-xs">Type: {move.type}</p>
         <p className="text-xs">Damage: {move.damage}</p>
       </div>
