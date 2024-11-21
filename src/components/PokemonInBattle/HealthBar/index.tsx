@@ -3,13 +3,10 @@
 import { useEffect, useState } from "react";
 
 interface HealthBarProps {
-  life: number;
+  lifeNow: number;
+  lifeMax: number;
 }
 
-<<<<<<< Updated upstream
-export default function HealthBar({ life }: HealthBarProps) {
-  const healthColor = life <= 20 ? "bg-red-600" : "bg-green-600";
-=======
 export default function HealthBar({ lifeNow, lifeMax }: HealthBarProps) {
   const [animatedLife, setAnimatedLife] = useState(lifeNow);
 
@@ -37,19 +34,11 @@ export default function HealthBar({ lifeNow, lifeMax }: HealthBarProps) {
 
   const healthPercentage = (animatedLife / lifeMax) * 100;
   const healthColor = healthPercentage <= 20 ? "bg-red-600" : "bg-green-600";
->>>>>>> Stashed changes
 
   return (
     <div className="h-10 w-4/5 bg-green-300 relative overflow-hidden">
       <div
         className={`h-full ${healthColor} border border-black`}
-<<<<<<< Updated upstream
-        style={{ width: `${life}%` }}
-      />
-      
-      <span className="absolute inset-0 flex items-center justify-center text-center">
-        {life}
-=======
         style={{
           width: `${healthPercentage}%`,
           transition: "width linear",
@@ -57,7 +46,6 @@ export default function HealthBar({ lifeNow, lifeMax }: HealthBarProps) {
       />
       <span className="absolute inset-0 flex items-center justify-center text-center font-bold text-black">
         {animatedLife}/{lifeMax}
->>>>>>> Stashed changes
       </span>
     </div>
   );
