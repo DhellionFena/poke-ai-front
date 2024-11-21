@@ -33,7 +33,7 @@ export default function MoveCard({ move }: MoveCardProps) {
 
   return (
     <button
-      className={`w-full text-base border-8 ${borderColor} flex items-center justify-center rounded-lg shadow-lg transition-transform duration-200 hover:scale-[1.02] hover:shadow-xl`}
+      className={`w-full text-base border-8 ${borderColor} flex items-center justify-center rounded-lg shadow-lg transition-transform duration-200 hover:scale-[1.02] hover:shadow-xl bg-[#dceaa2] md:p-4`}
     >
       <div>
       <h4
@@ -43,7 +43,6 @@ export default function MoveCard({ move }: MoveCardProps) {
           {move.name}
         </h4>
         <p className="text-xs">Type: {move.type}</p>
-        <p className="text-xs">Damage: {move.damage}</p>
       </div>
     </button>
   );

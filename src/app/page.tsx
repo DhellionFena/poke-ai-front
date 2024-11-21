@@ -3,7 +3,8 @@ import PokemonInBattle from "@/components/PokemonInBattle";
 export default function Home() {
   const Pikachu = {
     nome: "Pikachu",
-    vida: 19,
+    vidaAtual: 19,
+    vidaMax: 200,
     type1: "Electric",
     type2: "None",
     imageUrl: "https://archives.bulbagarden.net/media/upload/thumb/4/4a/0025Pikachu.png/800px-0025Pikachu.png",
@@ -17,10 +18,11 @@ export default function Home() {
 
   const Chimchar = {
     nome: "Chimchar",
-    vida: 73,
+    vidaAtual: 73,
+    vidaMax: 100,
     type1: "Fire",
     type2: "Fighting",
-    imageUrl: "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/390.png",
+    imageUrl: "https://archives.bulbagarden.net/media/upload/2/2b/HOME0390.png",
     moveset: [
       { name: "Flamethrower", type: "Fire", damage: 40 },
       { name: "Mach Punch", type: "Fighting", damage: 30 },
