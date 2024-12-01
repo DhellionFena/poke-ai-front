@@ -1,3 +1,5 @@
+"use client";
+
 import GamemodeCard from "@/components/GamemodeCard";
 import { ComputerDesktopIcon, UserIcon } from "@heroicons/react/24/solid";
 

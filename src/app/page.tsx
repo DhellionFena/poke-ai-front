@@ -2,8 +2,8 @@ import HomeButton from "../components/HomeButton";
 
 export default function Home() {
   return (
-    <main className="flex h-full w-full flex-col place-items-center bg-green-300 px-8">
-      <h1 className="my-8 text-center text-4xl">Poké-AI</h1>
+    <main className="w-fill flex h-fit flex-col place-items-center bg-green-300 px-8 py-2">
+      <h1 className="mx-4 my-8 text-clip text-center text-4xl">Poké-AI</h1>
       <HomeButton
         text="Iniciar"
         navigation="/gamemode"
