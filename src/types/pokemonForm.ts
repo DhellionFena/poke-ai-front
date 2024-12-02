@@ -37,3 +37,25 @@ export const pokemonSchema = z.object({
 });
 
 export type PokeForm = z.infer<typeof pokemonSchema>;
+
+export type Attack = {
+  nome: string;
+  tipo: string;
+  dano: number
+};
+
+
+export type Pokemon = {
+  nome: string;
+  tipo1: string;
+  tipo2: string | null;
+  descricao: string;
+  geracao: number;
+  regiao: string;
+  sprite: string;
+  movimento: Attack[];
+  hp: number;
+  ataque: number;
+  defesa: number;
+  velocidade: number;
+};
