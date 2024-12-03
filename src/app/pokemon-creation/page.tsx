@@ -19,7 +19,6 @@ export default function PokemonForm() {
   const searchParams = useSearchParams();
   const player = searchParams.get('pvp');
   const playerVsPc = searchParams.get('pvpc');
-
   const {
     register,
     handleSubmit,
@@ -30,7 +29,7 @@ export default function PokemonForm() {
   });
 
   const onSubmit = async (data: PokeForm) => {
-    try{
+    try {
       const pokemon = await CreatePokemon(data);
       console.log(pokemon)
       localStorage.setItem(`PLAYER${player || playerVsPc}`, JSON.stringify(pokemon));
@@ -55,7 +54,6 @@ export default function PokemonForm() {
     else if((player && player === '2') || (playerVsPc && playerVsPc === '2')){
       redirect('/battle');
     }
-    
   };
 
   return (
@@ -63,7 +61,11 @@ export default function PokemonForm() {
       <h1 className="py-5 text-center text-2xl text-black">
         Vamos criar o Pokémon do Jogador {player || playerVsPc}!
       </h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex w-4/5 flex-col">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex w-4/5 flex-col"
+        method="POST"
+      >
         <div className="flex-grow">
           <Label htmlFor="base_corpo">Base do Corpo</Label>
           <Input id="base_corpo" {...register("base_corpo")} />
@@ -76,7 +78,9 @@ export default function PokemonForm() {
             <Label htmlFor="cor_principal">Cor Principal</Label>
             <Input id="cor_principal" {...register("cor_principal")} />
             {errors.cor_principal && (
-              <p className="text-xs text-red-500">{errors.cor_principal.message}</p>
+              <p className="text-xs text-red-500">
+                {errors.cor_principal.message}
+              </p>
             )}
           </div>
           <div>
@@ -177,7 +181,9 @@ export default function PokemonForm() {
             className="input mt-2 h-24 resize-none"
           ></textarea>
           {errors.detalhes_extras && (
-            <p className="text-xs text-red-500">{errors.detalhes_extras.message}</p>
+            <p className="text-xs text-red-500">
+              {errors.detalhes_extras.message}
+            </p>
           )}
         </div>
         <Button type="submit" className="mt-4 w-full hover:bg-red-700">
@@ -185,6 +191,5 @@ export default function PokemonForm() {
         </Button>
       </form>
     </main>
-
   );
 }
