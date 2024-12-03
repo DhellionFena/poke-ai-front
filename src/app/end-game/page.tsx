@@ -48,12 +48,12 @@ export default function EndGame() {
       <div className="flex w-fit flex-col self-center">
         <HomeButton
           text="BATALHAR NOVAMENTE COM OS MESMOS POKÉMON"
-          navigation=""
+          navigation="/battle"
           navigationParams={null}
         />
         <HomeButton
           text="BATALHAR COM NOVOS POKÉMON"
-          navigation=""
+          navigation="/gamemode"
           navigationParams={null}
         />
       </div>
