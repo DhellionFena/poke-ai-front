@@ -51,12 +51,13 @@ export type Attack = {
 export type Pokemon = {
   nome: string;
   tipo1: string;
-  tipo2: string | undefined;
+  tipo2: string | null;
   movimento: Attack[];
   descricao: string;
   geracao: number;
   sprite: string;
   hp: number;
+  hpMax: number;
   ataque: number;
   defesa: number;
   velocidade: number;
@@ -83,4 +84,18 @@ export type PokemonCreateResponse = {
   hp: number;
   sprite: string;
   velocidade: number;
+}
+
+type StatsOpponnet = {
+  tipo1: string;
+  tipo2: string | null;
+  hp: number;
+  ataque: number;
+  defesa: number;
+}
+
+export type AttackIA = {
+  ataques_ia: Attack[];
+  stats_oponente: StatsOpponnet;
+
 }

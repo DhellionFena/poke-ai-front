@@ -18,6 +18,8 @@ import { redirect, useSearchParams } from "next/navigation";
 export default function PokemonForm() {
   const searchParams = useSearchParams();
   const player = searchParams.get('pvp');
+  const playerVsPc = searchParams.get('pvpc');
+
   const {
     register,
     handleSubmit,
@@ -31,13 +33,27 @@ export default function PokemonForm() {
     try{
       const pokemon = await CreatePokemon(data);
       console.log(pokemon)
-      localStorage.setItem(`PLAYER${player}`, JSON.stringify(pokemon));
+      localStorage.setItem(`PLAYER${player || playerVsPc}`, JSON.stringify(pokemon));
+      let mode: string = "";
+      if (player && !playerVsPc){
+        mode = "PVP";
+      }else{
+        mode = "PVPC";
+        
+      }
+      localStorage.setItem("MODE", mode);
+      
       
     }catch(error){
       console.error(error);
     }
-    if(player == '1'){
+    if(player && player === '1'){
       redirect('/pokemon-creation?pvp=2');
+    }else if(playerVsPc && playerVsPc === "1"){
+      redirect('/pokemon-creation?pvpc=2');
+    }
+    else if((player && player === '2') || (playerVsPc && playerVsPc === '2')){
+      redirect('/battle');
     }
     
   };
@@ -45,7 +61,7 @@ export default function PokemonForm() {
   return (
     <main className="flex w-full flex-grow flex-col items-center justify-center pb-1">
       <h1 className="py-5 text-center text-2xl text-black">
-        Vamos criar o Pokémon do Jogador {player}!
+        Vamos criar o Pokémon do Jogador {player || playerVsPc}!
       </h1>
       <form onSubmit={handleSubmit(onSubmit)} className="flex w-4/5 flex-col">
         <div className="flex-grow">
