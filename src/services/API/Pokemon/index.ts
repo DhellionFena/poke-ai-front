@@ -16,12 +16,13 @@ export const CreatePokemon = async (form: PokeForm): Promise<Pokemon> => {
         ataque: pokemonCriado.ataque,
         defesa: pokemonCriado.defesa,
         hp: pokemonCriado.hp,
+        hpMax: pokemonCriado.hp,
         geracao: form.geracao,
         movimento: pokemonCriado.movimento,
         sprite: pokemonCriado.sprite,
         velocidade: pokemonCriado.velocidade,
         tipo1: form.tipo_1,
-        tipo2: form.tipo_2
+        tipo2: form.tipo_2 as string | null
     }
     return pokemon;
 }

@@ -1,9 +1,9 @@
+import { Attack } from "@/types/pokemonForm";
+
 interface MoveCardProps {
-  move: {
-    name: string;
-    type: string;
-    damage: number;
-  };
+  move: Attack;
+  ataqueEscolhido: string | null;
+  escolherAtaque: (ataque: string) => void
 }
 
 const typeColors: { [key: string]: string } = {
@@ -28,21 +28,25 @@ const typeColors: { [key: string]: string } = {
   Shadow: "border-gray-800",
 };
 
-export default function MoveCard({ move }: MoveCardProps) {
-  const borderColor = typeColors[move.type] || "border-gray-500";
-
+export default function MoveCard({ move,ataqueEscolhido,  escolherAtaque }: MoveCardProps) {
+  const borderColor = typeColors[move.tipo] || "border-gray-500";
+  const handleAtaque = () => {
+    escolherAtaque(move.nome);
+  }
   return (
     <button
       className={`w-full text-base border-8 ${borderColor} flex items-center justify-center rounded-lg shadow-lg transition-transform duration-200 hover:scale-[1.02] hover:shadow-xl bg-[#dceaa2] md:p-4`}
+      disabled={ataqueEscolhido ? true : false}
+      onClick={handleAtaque}
     >
       <div>
       <h4
           className="font-bold text-sm break-words text-center"
           style={{ overflowWrap: "anywhere" }}
         >
-          {move.name}
+          {move.nome}
         </h4>
-        <p className="text-xs">Type: {move.type}</p>
+        <p className="text-xs">Type: {move.tipo}</p>
       </div>
     </button>
   );

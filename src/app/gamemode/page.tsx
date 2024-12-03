@@ -13,13 +13,13 @@ export default function Gamemode() {
         <GamemodeCard
           icon={<UserIcon height={72} />}
           text="Player vs Player"
-          mode="pvp"
+          mode="pvp=1"
         />
 
         <GamemodeCard
           icon={<ComputerDesktopIcon height={72} />}
           text="Player vs PC"
-          mode="pvpc"
+          mode="pvpc=1"
         />
       </section>
     </main>

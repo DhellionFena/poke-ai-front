@@ -9,7 +9,7 @@ export interface IResponseBatalha {
 
 }
 
-export class BattleService {
+class BattleService {
     private pokemon1: Pokemon;
     private pokemon2: Pokemon;
     private typeEffectivenessMatrix: number[][];
@@ -156,4 +156,8 @@ export class BattleService {
 
     
     
+
+
 }
+
+export {BattleService}

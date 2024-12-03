@@ -2,7 +2,9 @@
 
 import HomeButton from "@/components/HomeButton";
 import PokemonImage from "@/components/PokemonInBattle/PokemonImage";
+import { Pokemon } from "@/types/pokemonForm";
 import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface Move {
   name: string;
@@ -21,21 +23,27 @@ interface PokemonProps {
 }
 
 export default function EndGame() {
-  const query = useSearchParams();
-
-  const lastPokemonInBattle: PokemonProps[] = JSON.parse(
-    query.get("pokemon")?.toString() ?? "",
-  );
-
-  var first = lastPokemonInBattle[0];
-  var second = lastPokemonInBattle[1];
+  const [vencedor, setVencedor] = useState<Pokemon | null>(null);
+  const [perdedor, setPerdedor] = useState<Pokemon | null>(null);
+  useEffect(() => {
+    const vencedor = localStorage.getItem("VENCEDOR");
+    const p1 = localStorage.getItem("PLAYER1");
+    const p2 = localStorage.getItem("PLAYER2");
+    if(vencedor === "PLAYER1" && p1 && p2){
+      setVencedor(JSON.parse(p1) as Pokemon);
+      setPerdedor(JSON.parse(p2) as Pokemon);
+    }else if(vencedor === "PLAYER2" && p1 && p2){
+      setVencedor(JSON.parse(p2) as Pokemon);
+      setPerdedor(JSON.parse(p1) as Pokemon);
+    }
+  }, [])
 
   return (
     <main className="flex h-full flex-col">
       <div className="flex flex-row">
-        <PokemonImage image={first.imageUrl} />
+        <PokemonImage image={vencedor?.sprite as string} />
         <h1 className="content-center text-7xl text-white">VS</h1>
-        <PokemonImage image={second.imageUrl} />
+        <PokemonImage image={perdedor?.sprite as string} />
       </div>
       <div className="flex w-fit flex-col self-center">
         <HomeButton

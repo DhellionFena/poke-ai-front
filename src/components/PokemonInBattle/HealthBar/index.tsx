@@ -5,9 +5,11 @@ import { useEffect, useState } from "react";
 interface HealthBarProps {
   lifeNow: number;
   lifeMax: number;
+  setPodeAcabarAPartida: (pode: boolean) => void
+  podeAcabarAPartida: boolean;
 }
 
-export default function HealthBar({ lifeNow, lifeMax }: HealthBarProps) {
+export default function HealthBar({ lifeNow, lifeMax, setPodeAcabarAPartida, podeAcabarAPartida }: HealthBarProps) {
   const [animatedLife, setAnimatedLife] = useState(lifeNow);
 
   useEffect(() => {
@@ -24,8 +26,12 @@ export default function HealthBar({ lifeNow, lifeMax }: HealthBarProps) {
             clearInterval(interval);
             return lifeNow;
           }
+          if(nextValue <= 0 && !podeAcabarAPartida){
+            setPodeAcabarAPartida(true);
+          }
           return nextValue;
         });
+
       }, speedPerUnit);
 
       return () => clearInterval(interval);
