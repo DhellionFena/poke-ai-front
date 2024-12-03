@@ -16,7 +16,7 @@ export default function Home() {
     hpMax: 0,
     movimento: [],
     nome: "",
-    sprite: "",
+    sprite: "https://archives.bulbagarden.net/media/upload/thumb/4/4a/0025Pikachu.png/800px-0025Pikachu.png",
     tipo1: "",
     tipo2: null,
     velocidade: 0
@@ -30,7 +30,7 @@ export default function Home() {
     hpMax: 0,
     movimento: [],
     nome: "",
-    sprite: "",
+    sprite: "https://archives.bulbagarden.net/media/upload/thumb/4/4a/0025Pikachu.png/800px-0025Pikachu.png",
     tipo1: "",
     tipo2: null,
     velocidade: 0
