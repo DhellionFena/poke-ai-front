@@ -22,18 +22,21 @@ export const pokemonTypes = [
 ] as const;
 
 export const pokemonSchema = z.object({
-  nome: z.string().min(1, "Nome é obrigatório"),
-  tipo1: z.enum(pokemonTypes, {
+  base_corpo: z.string().min(1, "Descrição do corpo é obrigatória"),
+  cor_principal: z.string().min(1, "Cor principal é obrigatória"),
+  cor_secundaria: z.string().min(1, "Cor secundária é obrigatória"),
+  tipo_1: z.enum(pokemonTypes, {
     errorMap: () => ({ message: "Tipo 1 é obrigatório" }),
   }),
-  tipo2: z.enum(pokemonTypes).optional(),
-  altura: z.number().positive("Altura deve ser positiva"),
+  tipo_2: z.enum(pokemonTypes).optional(),
+  geracao: z
+    .number()
+    .nonnegative("Geração deve ser um número maior ou igual a 0"),
   peso: z.number().positive("Peso deve ser positivo"),
-  sexo: z.enum(["masc", "fem"]).refine((val) => !!val, {
-    message: "Sexo é obrigatório",
-  }),
-  descricao: z.string().min(10, "Descrição deve ter no mínimo 10 caracteres"),
-  regiao: z.string().min(1, "Região é obrigatória"),
+  altura: z.number().positive("Altura deve ser positiva"),
+  detalhes_extras: z
+    .string()
+    .optional()
 });
 
 export type PokeForm = z.infer<typeof pokemonSchema>;
@@ -48,14 +51,36 @@ export type Attack = {
 export type Pokemon = {
   nome: string;
   tipo1: string;
-  tipo2: string | null;
+  tipo2: string | undefined;
+  movimento: Attack[];
   descricao: string;
   geracao: number;
-  regiao: string;
   sprite: string;
-  movimento: Attack[];
   hp: number;
   ataque: number;
   defesa: number;
   velocidade: number;
 };
+
+export type PokemonCreateForm = {
+  base_corpo: string;
+  cor_principal: string;
+  cor_secundaria: string;
+  tipo_1: string;
+  tipo_2: string | null;
+  geracao: number;
+  peso: number;
+  altura: number;
+  detalhes_extras: string;
+}
+
+export type PokemonCreateResponse = {
+  nome: string;
+  descricao: string;
+  movimento: Attack[];
+  ataque: number;
+  defesa: number;
+  hp: number;
+  sprite: string;
+  velocidade: number;
+}
