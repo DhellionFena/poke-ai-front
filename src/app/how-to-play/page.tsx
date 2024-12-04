@@ -1,5 +1,5 @@
 
-export default function About(){
+export default function HowToPlay(){
     return (
         <main className="flex h-full w-full flex-grow flex-col items-center justify-center px-5">
             <section className="m-12 flex-col flex-grow  w-full rounded border-4 border-black bg-white px-8 py-8 text-black hover:border-red-600 hover:text-red-600">
