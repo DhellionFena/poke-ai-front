@@ -35,7 +35,7 @@ export default function MoveCard({ move,ataqueEscolhido,  escolherAtaque }: Move
   }
   return (
     <button
-      className={`w-full text-base border-8 ${borderColor} flex items-center justify-center rounded-lg shadow-lg transition-transform duration-200 hover:scale-[1.02] hover:shadow-xl bg-[#dceaa2] md:p-4`}
+      className={`w-full  text-base border-8 ${borderColor} flex items-center justify-center rounded-lg shadow-lg transition-transform duration-200 hover:scale-[1.02] hover:shadow-xl  md:p-4`}
       disabled={ataqueEscolhido ? true : false}
       onClick={handleAtaque}
     >
