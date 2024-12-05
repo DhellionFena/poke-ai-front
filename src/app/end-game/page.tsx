@@ -45,6 +45,8 @@ export default function EndGame() {
           onClick={() => {
             localStorage.removeItem("PLAYER1");
             localStorage.removeItem("PLAYER2");
+            localStorage.removeItem("VENCEDOR");
+            localStorage.removeItem("PERDEDOR");
           }}
           navigationParams={localStorage.getItem("MODE")}
         />
