@@ -9,9 +9,6 @@ export default function Home() {
       <HomeButton
         text="Iniciar"
         navigation="/gamemode"
-        onClick={() => {
-          console.log("aoba");
-        }}
         navigationParams={null}
       />
       <HomeButton
