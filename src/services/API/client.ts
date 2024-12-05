@@ -2,7 +2,7 @@ export const httpClient = async <T>(
   url: string,
   options: RequestInit,
 ): Promise<T> => {
-  const baseUrl = process.env.URL_BASE || "http://127.0.0.1:8000";
+  const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
   const response = await fetch(`${baseUrl}${url}`, options);
   if (!response.ok) {
     const errorText = await response.text();

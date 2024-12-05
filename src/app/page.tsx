@@ -1,8 +1,12 @@
 "use client";
 
+import { getHello } from "@/services/teste-api/hello";
 import HomeButton from "../components/HomeButton";
 
 export default function Home() {
+  const fetchHello = async () => {
+    console.log(await getHello());
+  }
   return (
     <main className="w-fill flex h-fit flex-col place-items-center bg-green-300 px-8 py-2">
       <h1 className="mx-4 my-8 text-clip text-center text-4xl">Poké-AI</h1>
@@ -21,6 +25,7 @@ export default function Home() {
         navigation="/about"
         navigationParams={null}
       />
+      <button onClick={fetchHello}>Teste api</button>
     </main>
   );
 }
