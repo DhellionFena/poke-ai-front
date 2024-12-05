@@ -43,8 +43,8 @@ export default function EndGame() {
           text="BATALHAR COM NOVOS POKÉMON"
           navigation="/pokemon-creation"
           onClick={() => {
-            localStorage.setItem("PLAYER1", "");
-            localStorage.setItem("PLAYER2", "");
+            localStorage.removeItem("PLAYER1");
+            localStorage.removeItem("PLAYER2");
           }}
           navigationParams={null}
         />
