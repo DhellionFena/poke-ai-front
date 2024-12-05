@@ -14,8 +14,11 @@ import {
 import { PokeForm, pokemonSchema, pokemonTypes } from "@/types/pokemonForm";
 import { CreatePokemon } from "@/services/API/Pokemon";
 import { redirect, useSearchParams } from "next/navigation";
+import { Suspense, useState } from "react";
+import LoadingPokeBola from "@/components/Loading";
 
 export default function PokemonForm() {
+  const [loading, setLoading] = useState<boolean>(false);
   const searchParams = useSearchParams();
   const player = searchParams.get('pvp');
   const playerVsPc = searchParams.get('pvpc');
@@ -29,6 +32,7 @@ export default function PokemonForm() {
   });
 
   const onSubmit = async (data: PokeForm) => {
+    setLoading(true);
     try {
       const pokemon = await CreatePokemon(data);
       console.log(pokemon)
@@ -45,6 +49,8 @@ export default function PokemonForm() {
       
     }catch(error){
       console.error(error);
+    }finally{
+      setLoading(false);
     }
     if(player && player === '1'){
       redirect('/pokemon-creation?pvp=2');
@@ -55,9 +61,12 @@ export default function PokemonForm() {
       redirect('/battle');
     }
   };
-
+  if(loading){
+    return <LoadingPokeBola />
+  }
   return (
     <main className="flex w-full flex-grow flex-col items-center justify-center pb-1">
+      
       <h1 className="py-5 text-center text-2xl text-black">
         Vamos criar o Pokémon do Jogador {player || playerVsPc}!
       </h1>
@@ -190,6 +199,7 @@ export default function PokemonForm() {
           Criar Pokémon
         </Button>
       </form>
+
     </main>
   );
 }

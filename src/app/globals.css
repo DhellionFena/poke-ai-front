@@ -87,3 +87,15 @@ body {
 .animate-slowBounce {
   animation: slowBounce 1s ease-in-out infinite;
 }
+@keyframes spinClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-clockwise {
+  animation: spinClockwise 2s linear infinite;
+}

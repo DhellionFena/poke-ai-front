@@ -1,9 +1,13 @@
+"use client"
 import { Attack } from "@/types/pokemonForm";
+import { useState } from "react";
+import { AtaqueEscolhido } from "..";
 
 interface MoveCardProps {
   move: Attack;
   ataqueEscolhido: string | null;
   escolherAtaque: (ataque: string) => void
+  statusAtaques: AtaqueEscolhido | undefined
 }
 
 const typeColors: { [key: string]: string } = {
@@ -28,14 +32,16 @@ const typeColors: { [key: string]: string } = {
   Shadow: "border-gray-800",
 };
 
-export default function MoveCard({ move,ataqueEscolhido,  escolherAtaque }: MoveCardProps) {
+export default function MoveCard({ move,ataqueEscolhido,  escolherAtaque, statusAtaques }: MoveCardProps) {
   const borderColor = typeColors[move.tipo] || "border-gray-500";
+  
   const handleAtaque = () => {
     escolherAtaque(move.nome);
+    
   }
   return (
     <button
-      className={`w-full text-base border-8 ${borderColor} flex items-center justify-center rounded-lg shadow-lg transition-transform duration-200 hover:scale-[1.02] hover:shadow-xl bg-[#dceaa2] md:p-4`}
+      className={`w-full  text-base border-8 ${borderColor} flex items-center justify-center rounded-lg shadow-lg transition-transform duration-200 hover:scale-[1.02] hover:shadow-xl ${statusAtaques?.escolheu ? "bg-red-700" : "bg-[#dceaa2] "} md:p-4`}
       disabled={ataqueEscolhido ? true : false}
       onClick={handleAtaque}
     >

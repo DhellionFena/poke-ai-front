@@ -1,5 +1,6 @@
 "use client";
 
+import CardPodio from "@/components/CardPodio";
 import HomeButton from "@/components/HomeButton";
 import PokemonImage from "@/components/PokemonInBattle/PokemonImage";
 import { Pokemon } from "@/types/pokemonForm";
