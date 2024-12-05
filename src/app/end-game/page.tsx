@@ -46,7 +46,7 @@ export default function EndGame() {
             localStorage.removeItem("PLAYER1");
             localStorage.removeItem("PLAYER2");
           }}
-          navigationParams={null}
+          navigationParams={localStorage.getItem("MODE")}
         />
       </div>
     </main>
