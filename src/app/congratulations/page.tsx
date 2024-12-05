@@ -2,6 +2,7 @@
 
 import HomeButton from "@/components/HomeButton";
 import { Pokemon } from "@/types/pokemonForm";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Congratulations() {
@@ -27,7 +28,7 @@ export default function Congratulations() {
         <h2>{vencedor?.nome}</h2>
       </div>
 
-      <img src={vencedor?.sprite} />
+      <Image src={vencedor?.sprite as string} alt="Imagem Vencedor" height={500} width={500} />
 
       <HomeButton
         text="Próximo"
