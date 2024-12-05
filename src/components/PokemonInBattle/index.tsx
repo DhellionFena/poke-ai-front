@@ -5,21 +5,6 @@ import HealthBar from "./HealthBar";
 import { Pokemon } from "@/types/pokemonForm";
 import { useEffect, useState } from "react";
 
-interface Move {
-  name: string;
-  type: string;
-  damage: number;
-}
-
-interface PokemonProps {
-  nome: string;
-  vidaMax: number;
-  vidaAtual: number;
-  type1: string;
-  type2: string;
-  imageUrl: string
-  moveset: Move[];
-}
 
 interface PokemonInBattleProps {
   pokemon: Pokemon;
@@ -35,12 +20,11 @@ export interface AtaqueEscolhido {
 }
 export default function PokemonInBattle({ pokemon, ataqueEscolhido, escolherAtaque, podeAcabarAPartida, mode, setPodeAcabarAPartida }: PokemonInBattleProps) {
   const [ataquesEscolhidos, setAtaquesEscolhidos] = useState<AtaqueEscolhido[]>(
-    pokemon.movimento.map((value, index) => ({nomeAtaque: value.nome, escolheu: false}))
+    pokemon.movimento.map((value) => ({nomeAtaque: value.nome, escolheu: false}))
   );
   useEffect(() => {
     if(ataqueEscolhido !== null){
-      let ataques: AtaqueEscolhido[]
-      ataques = pokemon.movimento.map((value, index) => (value.nome === ataqueEscolhido ? {nomeAtaque: value.nome, escolheu: true} : {nomeAtaque: value.nome, escolheu: false}));
+      const ataques: AtaqueEscolhido[] = pokemon.movimento.map((value) => (value.nome === ataqueEscolhido ? {nomeAtaque: value.nome, escolheu: true} : {nomeAtaque: value.nome, escolheu: false}));
       setAtaquesEscolhidos(ataques);
     }
   }, [ataqueEscolhido])

@@ -1,6 +1,5 @@
 "use client"
 import { Attack } from "@/types/pokemonForm";
-import { useState } from "react";
 import { AtaqueEscolhido } from "..";
 
 interface MoveCardProps {

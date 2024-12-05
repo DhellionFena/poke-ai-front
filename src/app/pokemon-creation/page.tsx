@@ -14,7 +14,7 @@ import {
 import { PokeForm, pokemonSchema, pokemonTypes } from "@/types/pokemonForm";
 import { CreatePokemon } from "@/services/API/Pokemon";
 import { redirect, useSearchParams } from "next/navigation";
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import LoadingPokeBola from "@/components/Loading";
 
 export default function PokemonForm() {

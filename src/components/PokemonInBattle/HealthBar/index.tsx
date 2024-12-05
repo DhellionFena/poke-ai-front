@@ -15,8 +15,8 @@ export default function HealthBar({ lifeNow, lifeMax, setPodeAcabarAPartida, pod
   useEffect(() => {
     if (animatedLife !== lifeNow) {
       const speedPerUnit = 35;
-      const difference = Math.abs(lifeNow - animatedLife);
-      const totalDuration = difference * speedPerUnit;
+      //const difference = Math.abs(lifeNow - animatedLife);
+      //const totalDuration = difference * speedPerUnit;
       const step = lifeNow > animatedLife ? 1 : -1;
 
       const interval = setInterval(() => {

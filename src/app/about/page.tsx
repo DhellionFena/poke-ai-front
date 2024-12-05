@@ -2,7 +2,7 @@
 import React from "react";
 import Autoplay from "embla-carousel-autoplay"
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { Card } from "@/components/ui/card";
 type Equipe = {
     imagem: string,

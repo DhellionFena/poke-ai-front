@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import PokedexLayout from "@/components/PokedexLayout";
+import { Suspense } from "react";
 
 const PressStart2P = Press_Start_2P({
   weight: "400",
@@ -37,7 +38,9 @@ export default function RootLayout({
       >
         <PokedexLayout>
           <div className="flex min-h-full w-full flex-col rounded-md bg-green-300">
-            {children}
+            <Suspense>
+              {children}
+            </Suspense>
           </div>
         </PokedexLayout>
       </body>

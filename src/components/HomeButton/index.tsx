@@ -1,12 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { MouseEventHandler } from "react";
 
 interface HomeButtonProps {
   text: string;
   navigation: string;
-  navigationParams: any;
+  navigationParams:string | null;
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
 

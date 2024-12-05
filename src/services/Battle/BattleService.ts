@@ -147,7 +147,7 @@ class BattleService {
     }
 
     private getIndexType(type: string): number{
-        let index = pokemonTypes.findIndex(t => t === type);
+        const index = pokemonTypes.findIndex(t => t === type);
         if(index === -1){
             throw new Error("Tipo não identificado");
         }

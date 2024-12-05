@@ -1,11 +1,8 @@
 "use client";
 
 import HomeButton from "@/components/HomeButton";
-import LoadingPokeBola from "@/components/Loading";
 import PokemonImage from "@/components/PokemonInBattle/PokemonImage";
 import { Pokemon } from "@/types/pokemonForm";
-import { tree } from "next/dist/build/templates/app-page";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Congratulations() {

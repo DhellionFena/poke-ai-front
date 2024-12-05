@@ -1,22 +1,22 @@
 "use client";
-
-import CardPodio from "@/components/CardPodio";
 import HomeButton from "@/components/HomeButton";
 import PokemonImage from "@/components/PokemonInBattle/PokemonImage";
 import { Pokemon } from "@/types/pokemonForm";
 import { useEffect, useState } from "react";
-import { redirect } from "next/navigation";
 
 export default function EndGame() {
   const [player1, setPlayer1] = useState<Pokemon | null>(null);
   const [player2, setPlayer2] = useState<Pokemon | null>(null);
-  useEffect(() => {
-    const p1 = localStorage.getItem("PLAYER1");
-    const p2 = localStorage.getItem("PLAYER2");
 
-    if (p1 && p2) {
-      setPlayer1(JSON.parse(p1) as Pokemon);
-      setPlayer2(JSON.parse(p2) as Pokemon);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const p1 = localStorage.getItem("PLAYER1");
+      const p2 = localStorage.getItem("PLAYER2");
+
+      if (p1 && p2) {
+        setPlayer1(JSON.parse(p1) as Pokemon);
+        setPlayer2(JSON.parse(p2) as Pokemon);
+      }
     }
   }, []);
 
@@ -32,11 +32,13 @@ export default function EndGame() {
           text="BATALHAR NOVAMENTE COM OS MESMOS POKÉMON"
           navigation="/battle"
           onClick={() => {
-            const p1 = localStorage.getItem("PLAYER1");
-            const p2 = localStorage.getItem("PLAYER2");
+            if (typeof window !== "undefined") {
+              const p1 = localStorage.getItem("PLAYER1");
+              const p2 = localStorage.getItem("PLAYER2");
 
-            localStorage.setItem("PLAYER1", p1!);
-            localStorage.setItem("PLAYER2", p2!);
+              localStorage.setItem("PLAYER1", p1!);
+              localStorage.setItem("PLAYER2", p2!);
+            }
           }}
           navigationParams={null}
         />
@@ -44,12 +46,16 @@ export default function EndGame() {
           text="BATALHAR COM NOVOS POKÉMON"
           navigation="/pokemon-creation"
           onClick={() => {
-            localStorage.removeItem("PLAYER1");
-            localStorage.removeItem("PLAYER2");
-            localStorage.removeItem("VENCEDOR");
-            localStorage.removeItem("PERDEDOR");
+            if (typeof window !== "undefined") {
+              localStorage.removeItem("PLAYER1");
+              localStorage.removeItem("PLAYER2");
+              localStorage.removeItem("VENCEDOR");
+              localStorage.removeItem("PERDEDOR");
+            }
           }}
-          navigationParams={localStorage.getItem("MODE")}
+          navigationParams={
+            typeof window !== "undefined" ? localStorage.getItem("MODE") : null
+          }
         />
       </div>
     </main>
