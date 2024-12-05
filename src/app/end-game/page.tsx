@@ -44,7 +44,7 @@ export default function EndGame() {
         />
         <HomeButton
           text="BATALHAR COM NOVOS POKÉMON"
-          navigation="/pokemon-creation"
+          navigation="/pokemon-creation?pvp=1"
           onClick={() => {
             if (typeof window !== "undefined") {
               localStorage.removeItem("PLAYER1");
