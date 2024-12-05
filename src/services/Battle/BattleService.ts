@@ -116,7 +116,7 @@ class BattleService {
         const effectivenessDamage = effectiveness * baseDamage;
         const reduceDamage = Math.round((this.pokemon2.defesa / 300) * effectivenessDamage);
         const totalDamage = effectivenessDamage - reduceDamage;
-        this.pokemon2.hp -= totalDamage;
+        this.pokemon2.hp -= Math.round(totalDamage);
         if(this.pokemon2.hp <= 0) {
             this.vencedor = 'Player1';
         }else{
@@ -136,7 +136,7 @@ class BattleService {
         const effectivenessDamage = effectiveness * baseDamage;
         const reduceDamage = Math.round((this.pokemon1.defesa / 300) * effectivenessDamage);
         const totalDamage = effectivenessDamage - reduceDamage;
-        this.pokemon1.hp -= totalDamage;
+        this.pokemon1.hp -= Math.round(totalDamage);
         if(this.pokemon1.hp <= 0) {
             this.vencedor = 'Player2';
         }else{
