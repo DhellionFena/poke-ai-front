@@ -1,18 +1,24 @@
+"use client";
+
 import Link from "next/link";
+import { MouseEventHandler } from "react";
 
 interface HomeButtonProps {
   text: string;
   navigation: string;
   navigationParams: any;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
 
 export default function HomeButton({
   text,
   navigation,
   navigationParams,
+  onClick,
 }: HomeButtonProps) {
   return (
     <Link
+      onClick={onClick}
       href={{
         pathname: navigation,
         query: navigationParams,

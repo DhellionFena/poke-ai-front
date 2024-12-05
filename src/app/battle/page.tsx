@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import PokemonInBattle from "@/components/PokemonInBattle";
 import { AttackIA, Pokemon } from "@/types/pokemonForm";
 import { useEffect, useState } from "react";
@@ -19,7 +19,7 @@ export default function Home() {
     sprite: "",
     tipo1: "",
     tipo2: null,
-    velocidade: 0
+    velocidade: 0,
   });
   const [player2, setPlayer2] = useState<Pokemon>({
     ataque: 0,
@@ -33,32 +33,33 @@ export default function Home() {
     sprite: "",
     tipo1: "",
     tipo2: null,
-    velocidade: 0
+    velocidade: 0,
   });
   const [ataquePlayer1, setAtaquePlayer1] = useState<string | null>(null);
   const [ataquePlayer2, setAtaquePlayer2] = useState<string | null>(null);
-  const [batalha, setBatalhaService] = useState<BattleService>()
+  const [batalha, setBatalhaService] = useState<BattleService>();
   const [mode, setMode] = useState<string | null>(null);
   const [vencedor, setVencedor] = useState<string | null>(null);
   const [podeAcabarAPartida, setPodeAcabarAPartida] = useState<boolean>(false);
   useEffect(() => {
     const mode = localStorage.getItem("MODE");
-    if(!mode){
+    if (!mode) {
       throw new Error("MODO não identificado");
     }
     const p1 = localStorage.getItem("PLAYER1");
     const p2 = localStorage.getItem("PLAYER2");
-    if(p1 && p2){
+    if (p1 && p2) {
       setPlayer1(JSON.parse(p1) as Pokemon);
       setPlayer2(JSON.parse(p2) as Pokemon);
-      setBatalhaService(new BattleService(JSON.parse(p1) as Pokemon, JSON.parse(p2) as Pokemon))
-    }else {
-      if(mode === "PVP"){
-        redirect('/pokemon-creation?pvp=1'); 
-      }else{
-        redirect('/pokemon-creation?pvpc=1'); 
+      setBatalhaService(
+        new BattleService(JSON.parse(p1) as Pokemon, JSON.parse(p2) as Pokemon),
+      );
+    } else {
+      if (mode === "PVP") {
+        redirect("/pokemon-creation?pvp=1");
+      } else {
+        redirect("/pokemon-creation?pvpc=1");
       }
-      
     }
 
     setMode(mode);
@@ -66,19 +67,18 @@ export default function Home() {
 
   useEffect(() => {
     const EfetuarBatalha = async () => {
-      if(ataquePlayer1 && ataquePlayer2 && batalha && mode === "PVP"){
+      if (ataquePlayer1 && ataquePlayer2 && batalha && mode === "PVP") {
         const log = batalha?.batalha(ataquePlayer1, ataquePlayer2);
-        setPlayer1(batalha.getPokemonPlayer1())
-        setPlayer2(batalha.getPokemonPlayer2())
+        setPlayer1(batalha.getPokemonPlayer1());
+        setPlayer2(batalha.getPokemonPlayer2());
         setAtaquePlayer1(null);
         setAtaquePlayer2(null);
-        if(log.vencedor === "Player1"){
+        if (log.vencedor === "Player1") {
           setVencedor("PLAYER1");
-        }else if(log.vencedor === "Player2"){
+        } else if (log.vencedor === "Player2") {
           setVencedor("PLAYER2");
         }
-        
-      }else if (ataquePlayer1 && batalha && mode === "PVPC"){
+      } else if (ataquePlayer1 && batalha && mode === "PVPC") {
         const formAttackIA: AttackIA = {
           ataques_ia: player2.movimento,
           stats_oponente: {
@@ -86,50 +86,50 @@ export default function Home() {
             defesa: batalha.getPokemonPlayer1().defesa,
             hp: batalha.getPokemonPlayer1().hp,
             tipo1: batalha.getPokemonPlayer1().tipo1,
-            tipo2: batalha.getPokemonPlayer1().tipo2
-          }
-          
+            tipo2: batalha.getPokemonPlayer1().tipo2,
+          },
         };
         const ataqueIA = await GetAttackIA(formAttackIA);
-        console.log('ataqueIA', ataqueIA);
+        console.log("ataqueIA", ataqueIA);
         const log = batalha.batalha(ataquePlayer1, ataqueIA.nome);
-        setPlayer1(batalha.getPokemonPlayer1())
-        setPlayer2(batalha.getPokemonPlayer2())
+        setPlayer1(batalha.getPokemonPlayer1());
+        setPlayer2(batalha.getPokemonPlayer2());
         setAtaquePlayer1(null);
         setAtaquePlayer2(null);
-        if(log.vencedor === "Player1"){
+        if (log.vencedor === "Player1") {
           setVencedor("PLAYER1");
-        }else if(log.vencedor === "Player2"){
+        } else if (log.vencedor === "Player2") {
           setVencedor("PLAYER2");
         }
       }
-    }
+    };
     EfetuarBatalha();
-
-  }, [ataquePlayer1, ataquePlayer2])
+  }, [ataquePlayer1, ataquePlayer2]);
   useEffect(() => {
-    if(vencedor && podeAcabarAPartida){
+    if (vencedor && podeAcabarAPartida) {
       localStorage.setItem("VENCEDOR", vencedor);
-      redirect('/end-game')
+      redirect("/congratulations");
     }
-  }, [vencedor, podeAcabarAPartida])
+  }, [vencedor, podeAcabarAPartida]);
 
   return (
-    <div className="flex flex-col xl:flex-row items-center justify-evenly min-h-full bg-white">
-      <PokemonInBattle 
+    <div className="flex min-h-full flex-col items-center justify-evenly bg-white xl:flex-row">
+      <PokemonInBattle
         podeAcabarAPartida={podeAcabarAPartida}
         setPodeAcabarAPartida={setPodeAcabarAPartida}
-        mode={"PVP"} 
-        ataqueEscolhido={ataquePlayer1} 
-        escolherAtaque={setAtaquePlayer1} 
-        pokemon={player1} />
-      <PokemonInBattle 
+        mode={"PVP"}
+        ataqueEscolhido={ataquePlayer1}
+        escolherAtaque={setAtaquePlayer1}
+        pokemon={player1}
+      />
+      <PokemonInBattle
         podeAcabarAPartida={podeAcabarAPartida}
-        setPodeAcabarAPartida={setPodeAcabarAPartida} 
-        mode={mode} 
-        ataqueEscolhido={ataquePlayer2} 
-        escolherAtaque={setAtaquePlayer2} 
-        pokemon={player2} />
+        setPodeAcabarAPartida={setPodeAcabarAPartida}
+        mode={mode}
+        ataqueEscolhido={ataquePlayer2}
+        escolherAtaque={setAtaquePlayer2}
+        pokemon={player2}
+      />
     </div>
   );
 }
