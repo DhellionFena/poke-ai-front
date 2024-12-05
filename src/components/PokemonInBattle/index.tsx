@@ -3,6 +3,7 @@ import PokemonImage from "./PokemonImage";
 import MoveSetComponent from "./MovesetComponent";
 import HealthBar from "./HealthBar";
 import { Pokemon } from "@/types/pokemonForm";
+import { useEffect, useState } from "react";
 
 interface Move {
   name: string;
@@ -28,8 +29,21 @@ interface PokemonInBattleProps {
   setPodeAcabarAPartida: (pode: boolean) => void
   podeAcabarAPartida: boolean;
 }
-
+export interface AtaqueEscolhido {
+  nomeAtaque: string;
+  escolheu: boolean;
+}
 export default function PokemonInBattle({ pokemon, ataqueEscolhido, escolherAtaque, podeAcabarAPartida, mode, setPodeAcabarAPartida }: PokemonInBattleProps) {
+  const [ataquesEscolhidos, setAtaquesEscolhidos] = useState<AtaqueEscolhido[]>(
+    pokemon.movimento.map((value, index) => ({nomeAtaque: value.nome, escolheu: false}))
+  );
+  useEffect(() => {
+    if(ataqueEscolhido !== null){
+      let ataques: AtaqueEscolhido[]
+      ataques = pokemon.movimento.map((value, index) => (value.nome === ataqueEscolhido ? {nomeAtaque: value.nome, escolheu: true} : {nomeAtaque: value.nome, escolheu: false}));
+      setAtaquesEscolhidos(ataques);
+    }
+  }, [ataqueEscolhido])
   return (
     <div
       className="min-h-full w-full border-2 border-black md:p-4 shadow-lg bg-[url('https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/204364595/original/86db6005cd51b4f60e71cca277f603a82cf5646a/draw-a-pixel-pokemon-battle-background.png')] bg-cover bg-center"
@@ -44,7 +58,7 @@ export default function PokemonInBattle({ pokemon, ataqueEscolhido, escolherAtaq
       {mode === "PVP" ? 
       (
         <div className="xl:h-[40%] h-[60%]">
-          <MoveSetComponent ataqueEscolhido={ataqueEscolhido} escolherAtaque={escolherAtaque} moveset={pokemon.movimento} />
+          <MoveSetComponent statusAtaques={ataquesEscolhidos} ataqueEscolhido={ataqueEscolhido} escolherAtaque={escolherAtaque} moveset={pokemon.movimento} />
         </div>
       ) : null}
       

@@ -1,5 +1,6 @@
 "use client";
 
+import CardPodio from "@/components/CardPodio";
 import HomeButton from "@/components/HomeButton";
 import PokemonImage from "@/components/PokemonInBattle/PokemonImage";
 import { Pokemon } from "@/types/pokemonForm";
@@ -40,10 +41,10 @@ export default function EndGame() {
 
   return (
     <main className="flex h-full flex-col">
-      <div className="flex flex-row">
-        <PokemonImage image={vencedor?.sprite as string} />
+      <div className="flex flex-row justify-center">
+        <CardPodio sprite={vencedor?.sprite as string} titulo="VENCEDOR" />
         <h1 className="content-center text-7xl text-white">VS</h1>
-        <PokemonImage image={perdedor?.sprite as string} />
+        <CardPodio sprite={perdedor?.sprite as string} titulo="PERDEDOR" />
       </div>
       <div className="flex w-fit flex-col self-center">
         <HomeButton

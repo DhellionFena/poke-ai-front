@@ -114,6 +114,8 @@ export default function Home() {
     }
   }, [vencedor, podeAcabarAPartida])
 
+  
+
   return (
     <div className="flex flex-col xl:flex-row items-center justify-evenly min-h-full bg-white">
       <PokemonInBattle 
