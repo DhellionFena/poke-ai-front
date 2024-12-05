@@ -1,3 +1,5 @@
+"use client";
+
 import HomeButton from "../components/HomeButton";
 
 export default function Home() {
@@ -7,6 +9,9 @@ export default function Home() {
       <HomeButton
         text="Iniciar"
         navigation="/gamemode"
+        onClick={() => {
+          console.log("aoba");
+        }}
         navigationParams={null}
       />
       <HomeButton
